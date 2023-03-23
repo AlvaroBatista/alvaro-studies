@@ -1,10 +1,14 @@
-import React from "react"
+import { ReactNode } from "react"
 import style from './Button.module.scss'
 
-function Button()  {
+interface ButtonProps {
+  children: ReactNode
+}
+
+function Button({children} : ButtonProps)  {
   return (
     <button className={style.button}>
-      Botão
+     {children}
     </button>
   )
 }
