@@ -3,11 +3,12 @@ import style from './Button.module.scss'
 
 interface ButtonProps {
   children: ReactNode
+  type?: "button" | "submit" | "reset" | undefined
 }
 
-function Button({children} : ButtonProps)  {
+function Button({children, type = "button"} : ButtonProps)  {
   return (
-    <button className={style.button}>
+    <button type={type} className={style.button}>
      {children}
     </button>
   )
