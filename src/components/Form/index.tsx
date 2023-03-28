@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Button from "../Button";
-import { ITaks } from '../types/task';
+import { ITask } from '../types/task';
 import style from './Form.module.scss'
 import {v4 as uuidv4} from 'uuid'
 
 interface FormProps {
-  setTaks : React.Dispatch<React.SetStateAction<ITaks[]>>
+  setTaks : React.Dispatch<React.SetStateAction<ITask[]>>
 }
 
 function Form({setTaks}: FormProps) {
@@ -22,7 +22,7 @@ function Form({setTaks}: FormProps) {
           id: uuidv4()
         }
       ])
-    setInput({name: '', time: ''})
+    setInput({name: '', time: '00:00:00'})
   }
 
   return (

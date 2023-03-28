@@ -1,4 +1,4 @@
-export interface ITaks {
+export interface ITask {
   name: string,
   time: string,
   selected: boolean,
