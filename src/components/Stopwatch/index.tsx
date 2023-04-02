@@ -7,8 +7,9 @@ import style from './Stopwatch.module.scss'
 
 interface StopWatchProps {
   selected: ITask | undefined
+  completedTask: () => void
 }
-function StopWatch({selected}: StopWatchProps) {
+function StopWatch({selected, completedTask}: StopWatchProps) {
   const [time, setTime] = useState<number>();
 
   useEffect(() => {
@@ -17,14 +18,23 @@ function StopWatch({selected}: StopWatchProps) {
     }
   }, [selected?.time])
 
+  function regressive(counter: number = 0) {
+    setTimeout(() => {
+      if (counter > 0) {
+        setTime(counter - 1)
+        regressive(counter - 1)
+      }
+      if (counter === 0) completedTask()
+    }, 1000)
+  }
+
   return (
     <div className={style.stopwatch}>
       <p className={style.title}> Escolha um card e inicie o cronômetro </p>
-      Time: {time}
       <div className={style.clockWrapper}>
-      <Clock/>
+      <Clock time={time}/>
       </div>
-      <Button>
+      <Button onClick={() => regressive(time)}>
         Começar!
       </Button>
     </div>

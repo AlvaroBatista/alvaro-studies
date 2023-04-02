@@ -9,7 +9,7 @@ interface FormProps {
 }
 
 function Form({setTaks}: FormProps) {
-  const [input, setInput] = useState({name: '', time: '00:00:00'})
+  const [input, setInput] = useState({name: '', time: '00:00'})
 
   function addTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -22,7 +22,7 @@ function Form({setTaks}: FormProps) {
           id: uuidv4()
         }
       ])
-    setInput({name: '', time: '00:00:00'})
+    setInput({name: '', time: '00:00'})
   }
 
   return (
